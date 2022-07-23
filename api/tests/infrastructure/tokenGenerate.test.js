@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const dbHandler = require('../dbSetup');
 
-const tokenModel = require('../../app/domain/user/model/token.js');
-const userRepo = require('../../app/infrastructure/user/repository.js');
+const tokenModel = require('../../src/user/models/token.js');
+const userRepo = require('../../src/user/repository.js');
 
 beforeAll(async () => { await dbHandler.connect() });
 afterEach(async () => { await dbHandler.clearDatabase() });

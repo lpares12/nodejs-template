@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 
 const dbHandler = require('../dbSetup');
 
-const userModel = require('../../app/domain/user/model/user.js');
-const userRepo = require('../../app/infrastructure/user/repository.js');
+const userRepo = require('../../src/user/repository.js');
 
 beforeAll(async () => { await dbHandler.connect() });
 afterEach(async () => { await dbHandler.clearDatabase() });
@@ -17,7 +16,7 @@ describe('userRepositoryCreate', () => {
 
 		expect(doc.username).toEqual(userComplete.username);
 		expect(doc.email).toEqual(userComplete.email);
-		//For password we will make other tests 
+		//For password we will make other tests
 		expect(doc.isVerified).toEqual(false);
 
 		//TODO: check why this doesnt work

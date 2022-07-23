@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 
 const dbHandler = require('../dbSetup');
 
-const userModel = require('../../app/domain/user/model/user.js');
-const authTokenModel = require('../../app/domain/user/model/authToken.js');
-const userRepo = require('../../app/infrastructure/user/repository.js');
+const userModel = require('../../src/user/models/user.js');
+const authTokenModel = require('../../src/user/models/authToken.js');
+const userRepo = require('../../src/user/repository.js');
 
 beforeAll(async () => { await dbHandler.connect() });
 afterEach(async () => { await dbHandler.clearDatabase() });

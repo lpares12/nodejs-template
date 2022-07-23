@@ -4,12 +4,20 @@ This is the Backend API for the project.
 
 ## Architecture
 
-The current design is based on DDD + hexagonal architecture. We can find a folder application which contains the main sources. Inside this folder we find:
+The current design is based on DDD + hexagonal architecture. We can find the `src` folder that containst the main sources organized by domains.
 
-- controller: contains the controllers, which are the entry points of the application. In this case, since it will only be accessible through a web app, we only have http controller.
-- application: contains the commands/use cases that are available for execution. Gets called by the controllers and executes the commands on the repository. Also interacts with the external ports/interfaces.
-- domain: currently only contains the model of the application. In this case, it is totally integrated with mongoose.
-- infrastructure: implementation of the interfaces to access the models and external libraries. In this case we have the methods to save/update/remove data from Mongo database, and interaction with email
+Each of this domain contains:
+
+- commands folder: use cases that are available for execution. Gets called by the controllers and executes commands on the repository. Also interacts with externa interfaces.
+- controller folder: entry points of the application. In this case, since it will only be accessible through a web app, we only have http controller.
+- models folder: defines the models for the domain.
+- routes: defines the routes for this specific domain.
+- repository: implementation of the interfaces to interact with the external database for these specific models. In this case we have the methods to save/update/remove data from Mongo database.
+
+Also we find two other folders:
+
+- utils: which contains the interfaces/ports used to interact with external modules, such as stripe or send emails.
+- middleware: executed when matching routes.
 
 ## Dependencies
 
